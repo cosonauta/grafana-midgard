@@ -1,0 +1,40 @@
+name: CI
+
+on: 
+  push:
+
+# Use concurrency so only one job is executing and the queued ones will be cancelled
+# when a new one enters. We can do this because we always want the latest image.
+concurrency: 
+  group: deploy-grafana
+
+env:
+  KUSTOMIZE_VERSION: 4.4.1
+
+jobs:
+  check:
+    name: Check
+    runs-on: ["self-hosted", "standard-nano"]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make check
+
+  release:
+    # Only on main branch.
+    if: startsWith(github.ref, 'refs/heads/main')
+    env:
+      PROD_IMAGE_NAME: ghcr.io/cosonauta/grafana-midgard
+      VERSION: ${{ github.sha }}
+    needs: [check]
+    name: Release images
+    runs-on: ["self-hosted", "standard-nano"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker login
+        run: docker login ghcr.io -u ${{ github.actor }} -p "${{ secrets.GITHUB_TOKEN }}"
+      - name: Build image
+        run: make build-image
+      - name: Publish image
+        run: make publish-image
+
+  # TODO(slok): Deploy.

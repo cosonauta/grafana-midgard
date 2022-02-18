@@ -27,7 +27,7 @@ jobs:
       VERSION: ${{ github.sha }}
     needs: [check]
     name: Release images
-    runs-on: ["self-hosted", "standard-nano"]
+    runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v2
       - name: Docker login

@@ -3045,7 +3045,7 @@
     ]
   },
   "timezone": "UTC",
-    "title": "Ubiquiti / Clients",
+  "title": "Ubiquiti / Clients",
   "uid": "ubiquiti-clients",
   "version": 1,
   "weekStart": ""

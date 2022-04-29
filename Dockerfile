@@ -1,4 +1,4 @@
-FROM grafana/grafana:8.4.1
+FROM grafana/grafana:8.5.1
 
 
 COPY ./dashboards /etc/dashboards

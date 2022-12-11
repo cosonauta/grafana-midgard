@@ -69,9 +69,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -80,7 +78,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "avg_over_time(unifipoller_device_uplink_latency_seconds[${interval}])",
+          "expr": "avg_over_time(unpoller_device_uplink_latency_seconds[${interval}])",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -135,9 +133,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -146,14 +142,14 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "sum(rate(unifipoller_device_wan_receive_bytes_total[${interval}])) * 8",
+          "expr": "sum(rate(unpoller_device_wan_receive_bytes_total[${interval}])) * 8",
           "interval": "",
           "legendFormat": "Download",
           "queryType": "randomWalk",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(unifipoller_device_wan_transmit_bytes_total[${interval}])) * 8",
+          "expr": "sum(rate(unpoller_device_wan_transmit_bytes_total[${interval}])) * 8",
           "interval": "",
           "legendFormat": "Upload",
           "refId": "B"
@@ -194,9 +190,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -205,7 +199,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "count(unifipoller_client_uptime_seconds)",
+          "expr": "count(unpoller_client_uptime_seconds)",
           "instant": true,
           "interval": "",
           "legendFormat": "Clients",
@@ -263,9 +257,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -274,7 +266,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "avg(unifipoller_client_satisfaction_ratio)",
+          "expr": "avg(unpoller_client_satisfaction_ratio)",
           "instant": true,
           "interval": "",
           "legendFormat": "WiFi satisfaction",
@@ -338,9 +330,7 @@
         "displayMode": "basic",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -349,7 +339,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "sum(unifipoller_device_cpu_utilization_ratio) by (name)",
+          "expr": "sum(unpoller_device_cpu_utilization_ratio) by (name)",
           "instant": true,
           "interval": "",
           "legendFormat": "{{name}}",
@@ -402,9 +392,7 @@
         "displayMode": "basic",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -413,7 +401,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "sum(unifipoller_device_memory_utilization_ratio) by (name)",
+          "expr": "sum(unpoller_device_memory_utilization_ratio) by (name)",
           "instant": true,
           "interval": "",
           "legendFormat": "{{name}}",
@@ -488,7 +476,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg_over_time(\n  clamp_max(2 * (sum(unifipoller_client_radio_signal_db) by (name) + 110), 100)[${interval}:]\n)",
+          "expr": "avg_over_time(\n  clamp_max(2 * (sum(unpoller_client_radio_signal_db) by (name) + 110), 100)[${interval}:]\n)",
           "hide": false,
           "interval": "",
           "legendFormat": "{{name}}",
@@ -596,14 +584,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(unifipoller_client_transmit_bytes_total[${interval}])) by (name) * 8 > 0",
+          "expr": "sum(rate(unpoller_client_transmit_bytes_total[${interval}])) by (name) * 8 > 0",
           "interval": "",
           "legendFormat": "{{name}} Tx",
           "queryType": "randomWalk",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(unifipoller_client_receive_bytes_total[${interval}])) by (name) * 8 > 0",
+          "expr": "sum(rate(unpoller_client_receive_bytes_total[${interval}])) by (name) * 8 > 0",
           "interval": "",
           "legendFormat": "{{name}} Rx",
           "refId": "B"
@@ -1123,7 +1111,7 @@
           ],
           "targets": [
             {
-              "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unifipoller_client_receive_bytes_total{wired!=\"true\"})",
+              "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unpoller_client_receive_bytes_total{wired!=\"true\"})",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1132,7 +1120,7 @@
               "refId": "A"
             },
             {
-              "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unifipoller_client_transmit_bytes_total{wired!=\"true\"})",
+              "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unpoller_client_transmit_bytes_total{wired!=\"true\"})",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1140,7 +1128,7 @@
               "refId": "B"
             },
             {
-              "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unifipoller_client_uptime_seconds{wired!=\"true\",site_name=~\"$Site\", name=~\"$Wireless\"})",
+              "expr": "sum by (channel,essid,ip,mac,name,network,oui,radio_desc,site_name,source) (\n unpoller_client_uptime_seconds{wired!=\"true\",site_name=~\"$Site\", name=~\"$Wireless\"})",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1506,7 +1494,7 @@
           ],
           "targets": [
             {
-              "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unifipoller_client_uptime_seconds{wired=\"true\", site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
+              "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unpoller_client_uptime_seconds{wired=\"true\", site_name=~\"$Site\", name=~\"$Wired\", sw_name=~\"$Switch\"})",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1514,7 +1502,7 @@
               "refId": "A"
             },
             {
-              "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unifipoller_client_receive_bytes_total{wired=\"true\"})",
+              "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unpoller_client_receive_bytes_total{wired=\"true\"})",
               "format": "table",
               "hide": false,
               "instant": true,
@@ -1523,7 +1511,7 @@
               "refId": "B"
             },
             {
-              "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unifipoller_client_transmit_bytes_total{wired=\"true\"})",
+              "expr": "sum by (ap_name,ip,mac,name,network,oui,site_name,source,sw_port) (\n     unpoller_client_transmit_bytes_total{wired=\"true\"})",
               "format": "table",
               "hide": false,
               "instant": true,
@@ -1544,11 +1532,7 @@
   "refresh": "30s",
   "schemaVersion": 34,
   "style": "dark",
-  "tags": [
-      "home",
-      "network",
-      "ubiquiti"
-  ],
+  "tags": ["home", "network", "ubiquiti"],
   "templating": {
     "list": [
       {

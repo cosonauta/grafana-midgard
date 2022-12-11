@@ -33,9 +33,7 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": true,
-      "tags": [
-        "unifi-poller"
-      ],
+      "tags": ["unifi-poller"],
       "title": "UniFi Poller",
       "type": "dashboards"
     },
@@ -296,7 +294,7 @@
       ],
       "targets": [
         {
-          "expr": "sum by (ip,mac,model,name,serial,site_name,type,version,source) (unifipoller_device_info{site_name=~\"$Site\", name=~\"$Gateway\"})",
+          "expr": "sum by (ip,mac,model,name,serial,site_name,type,version,source) (unpoller_device_info{site_name=~\"$Site\", name=~\"$Gateway\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -304,7 +302,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum by (ip,mac,model,name,serial,site_name,type,version,source) (unifipoller_device_uptime_seconds{site_name=~\"$Site\", name=~\"$Gateway\"})",
+          "expr": "sum by (ip,mac,model,name,serial,site_name,type,version,source) (unpoller_device_uptime_seconds{site_name=~\"$Site\", name=~\"$Gateway\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -312,7 +310,7 @@
           "refId": "B"
         },
         {
-          "expr": "sum by (ip,mac,model,name,serial,site_name,type,version,source) (unifipoller_device_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"})",
+          "expr": "sum by (ip,mac,model,name,serial,site_name,type,version,source) (unpoller_device_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -389,9 +387,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -400,7 +396,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_uptime_seconds{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_uptime_seconds{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} Uptime",
@@ -459,9 +455,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -470,14 +464,14 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_speedtest_upload{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_speedtest_upload{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} Upload",
           "refId": "A"
         },
         {
-          "expr": "unifipoller_device_speedtest_download{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_speedtest_download{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} Download",
@@ -537,9 +531,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -548,14 +540,14 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "sum by (name) (unifipoller_device_speedtest_runtime_seconds{site_name=~\"$Site\", name=~\"$Gateway\"})",
+          "expr": "sum by (name) (unpoller_device_speedtest_runtime_seconds{site_name=~\"$Site\", name=~\"$Gateway\"})",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} Test Time",
           "refId": "A"
         },
         {
-          "expr": "sum by (name) (unifipoller_device_uplink_latency_seconds{site_name=~\"$Site\", name=~\"$Gateway\"})",
+          "expr": "sum by (name) (unpoller_device_uplink_latency_seconds{site_name=~\"$Site\", name=~\"$Gateway\"})",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} Uplink Latency",
@@ -621,9 +613,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -632,14 +622,14 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_cpu_utilization_ratio{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_cpu_utilization_ratio{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} CPU %",
           "refId": "A"
         },
         {
-          "expr": "unifipoller_device_memory_utilization_ratio{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_memory_utilization_ratio{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "instant": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} RAM %",
@@ -705,10 +695,8 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^unifipoller_device_uplink_speed_mbps{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", port=\"all\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\"}$/",
+          "calcs": ["lastNotNull"],
+          "fields": "/^unpoller_device_uplink_speed_mbps{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", port=\"all\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\"}$/",
           "values": false
         },
         "textMode": "auto"
@@ -716,7 +704,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_uplink_speed_mbps{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_uplink_speed_mbps{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "instant": true,
           "refId": "A"
         }
@@ -780,10 +768,8 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^unifipoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"desktop\", type=\"ugw\"}$/",
+          "calcs": ["lastNotNull"],
+          "fields": "/^unpoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"desktop\", type=\"ugw\"}$/",
           "values": false
         },
         "textMode": "auto"
@@ -791,7 +777,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"desktop\"}",
+          "expr": "unpoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"desktop\"}",
           "instant": true,
           "interval": "$Smooth",
           "refId": "A"
@@ -856,10 +842,8 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^unifipoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"user\", type=\"ugw\"}$/",
+          "calcs": ["lastNotNull"],
+          "fields": "/^unpoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"user\", type=\"ugw\"}$/",
           "values": false
         },
         "textMode": "auto"
@@ -867,7 +851,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"user\"}",
+          "expr": "unpoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"user\"}",
           "instant": true,
           "refId": "A"
         }
@@ -931,10 +915,8 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^unifipoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"mobile\", type=\"ugw\"}$/",
+          "calcs": ["lastNotNull"],
+          "fields": "/^unpoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"mobile\", type=\"ugw\"}$/",
           "values": false
         },
         "textMode": "auto"
@@ -942,7 +924,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"mobile\"}",
+          "expr": "unpoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"mobile\"}",
           "instant": true,
           "interval": "$Smooth",
           "refId": "A"
@@ -1007,10 +989,8 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^unifipoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"guest\", type=\"ugw\"}$/",
+          "calcs": ["lastNotNull"],
+          "fields": "/^unpoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"guest\", type=\"ugw\"}$/",
           "values": false
         },
         "textMode": "auto"
@@ -1018,7 +998,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"guest\"}",
+          "expr": "unpoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"guest\"}",
           "instant": true,
           "refId": "A"
         }
@@ -1082,10 +1062,8 @@
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^unifipoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"handheld\", type=\"ugw\"}$/",
+          "calcs": ["lastNotNull"],
+          "fields": "/^unpoller_device_stations{instance=\"UniFi-Poller:9130\", job=\"unifipoller\", name=\"gateway\", site_name=\"Home (default)\", source=\"https://unifi-controller:8443\", station_type=\"handheld\", type=\"ugw\"}$/",
           "values": false
         },
         "textMode": "auto"
@@ -1093,7 +1071,7 @@
       "pluginVersion": "8.3.5",
       "targets": [
         {
-          "expr": "unifipoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"handheld\"}",
+          "expr": "unpoller_device_stations{site_name=~\"$Site\", name=~\"$Gateway\",station_type=\"handheld\"}",
           "instant": true,
           "interval": "$Smooth",
           "refId": "A"
@@ -1172,20 +1150,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "unifipoller_device_load_average_1{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_load_average_1{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "interval": "$Smooth",
           "legendFormat": "{{name}} load1",
           "refId": "A"
         },
         {
-          "expr": "unifipoller_device_load_average_5{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_load_average_5{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "hide": true,
           "interval": "$Smooth",
           "legendFormat": "{{name}} load5",
           "refId": "B"
         },
         {
-          "expr": "unifipoller_device_load_average_15{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_load_average_15{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "interval": "$Smooth",
           "legendFormat": "{{name}} load15",
           "refId": "C"
@@ -1290,26 +1268,26 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_wan_receive_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_receive_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Bytes Rx",
           "refId": "A"
         },
         {
-          "expr": "rate(unifipoller_device_wan_transmit_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_transmit_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Bytes Tx",
           "refId": "B"
         },
         {
-          "expr": "unifipoller_device_wan_transmit_rate_bytes{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_wan_transmit_rate_bytes{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "hide": true,
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Bytes Tx",
           "refId": "C"
         },
         {
-          "expr": "unifipoller_device_wan_receive_rate_bytes{site_name=~\"$Site\", name=~\"$Gateway\"}",
+          "expr": "unpoller_device_wan_receive_rate_bytes{site_name=~\"$Site\", name=~\"$Gateway\"}",
           "hide": true,
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Bytes Rx",
@@ -1416,13 +1394,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_lan_receive_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_lan_receive_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Bytes Rx",
           "refId": "A"
         },
         {
-          "expr": "rate(unifipoller_device_lan_transmit_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_lan_transmit_bytes_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Bytes Tx",
           "refId": "B"
@@ -1530,13 +1508,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_wan_receive_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_receive_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Packets Rx",
           "refId": "A"
         },
         {
-          "expr": "rate(unifipoller_device_wan_transmit_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_transmit_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Packets Tx",
           "refId": "B"
@@ -1644,13 +1622,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_lan_receive_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_lan_receive_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Packets Rx",
           "refId": "A"
         },
         {
-          "expr": "rate(unifipoller_device_lan_transmit_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_lan_transmit_packets_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Packets Tx",
           "refId": "B"
@@ -1760,25 +1738,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_wan_transmit_broadcast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_transmit_broadcast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Broadcast Tx",
           "refId": "D"
         },
         {
-          "expr": "rate(unifipoller_device_wan_receive_broadcast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_receive_broadcast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Broadcast Rx",
           "refId": "C"
         },
         {
-          "expr": "rate(unifipoller_device_wan_receive_multicast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_receive_multicast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}}  Multicast Rx",
           "refId": "A"
         },
         {
-          "expr": "rate(unifipoller_device_wan_transmit_multicast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_transmit_multicast_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Multicast Tx",
           "refId": "B"
@@ -1885,25 +1863,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_wan_transmit_dropped_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_transmit_dropped_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Drops Tx",
           "refId": "A"
         },
         {
-          "expr": "rate(unifipoller_device_wan_receive_dropped_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_receive_dropped_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Drops Rx",
           "refId": "B"
         },
         {
-          "expr": "rate(unifipoller_device_wan_transmit_errors_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_transmit_errors_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Errors Tx",
           "refId": "C"
         },
         {
-          "expr": "rate(unifipoller_device_wan_receive_errors_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_wan_receive_errors_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Errors Rx",
           "refId": "D"
@@ -2009,7 +1987,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(unifipoller_device_lan_receive_dropped_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
+          "expr": "rate(unpoller_device_lan_receive_dropped_total{site_name=~\"$Site\", name=~\"$Gateway\"}[$__interval])",
           "hide": false,
           "interval": "$Smooth",
           "legendFormat": "{{name}} {{port}} Dropped Rx",
@@ -2069,11 +2047,7 @@
   "refresh": "1m",
   "schemaVersion": 34,
   "style": "dark",
-  "tags": [
-    "ubiquiti",
-    "unifi",
-    "network"
-  ],
+  "tags": ["ubiquiti", "unifi", "network"],
   "templating": {
     "list": [
       {
@@ -2087,7 +2061,7 @@
           "type": "prometheus",
           "uid": "P1809F7CD0C75ACF3"
         },
-        "definition": "label_values(unifipoller_device_info{type=~\"udm|usg|ugw\"},source)",
+        "definition": "label_values(unpoller_device_info{type=~\"udm|usg|ugw\"},source)",
         "hide": 2,
         "includeAll": true,
         "label": "",
@@ -2095,7 +2069,7 @@
         "name": "Controller",
         "options": [],
         "query": {
-          "query": "label_values(unifipoller_device_info{type=~\"udm|usg|ugw\"},source)",
+          "query": "label_values(unpoller_device_info{type=~\"udm|usg|ugw\"},source)",
           "refId": "prometheus-Controller-Variable-Query"
         },
         "refresh": 1,
@@ -2116,7 +2090,7 @@
           "type": "prometheus",
           "uid": "P1809F7CD0C75ACF3"
         },
-        "definition": "label_values(unifipoller_device_info{source=~\"$Controller\", type=~\"udm|usg|ugw\"},site_name)",
+        "definition": "label_values(unpoller_device_info{source=~\"$Controller\", type=~\"udm|usg|ugw\"},site_name)",
         "hide": 0,
         "includeAll": true,
         "label": "",
@@ -2124,7 +2098,7 @@
         "name": "Site",
         "options": [],
         "query": {
-          "query": "label_values(unifipoller_device_info{source=~\"$Controller\", type=~\"udm|usg|ugw\"},site_name)",
+          "query": "label_values(unpoller_device_info{source=~\"$Controller\", type=~\"udm|usg|ugw\"},site_name)",
           "refId": "prometheus-Site-Variable-Query"
         },
         "refresh": 1,
@@ -2145,7 +2119,7 @@
           "type": "prometheus",
           "uid": "P1809F7CD0C75ACF3"
         },
-        "definition": "label_values(unifipoller_device_info{site_name=~\"$Site\", type=~\"udm|usg|ugw\"},name)",
+        "definition": "label_values(unpoller_device_info{site_name=~\"$Site\", type=~\"udm|usg|ugw\"},name)",
         "hide": 2,
         "includeAll": true,
         "label": "",
@@ -2153,7 +2127,7 @@
         "name": "Gateway",
         "options": [],
         "query": {
-          "query": "label_values(unifipoller_device_info{site_name=~\"$Site\", type=~\"udm|usg|ugw\"},name)",
+          "query": "label_values(unpoller_device_info{site_name=~\"$Site\", type=~\"udm|usg|ugw\"},name)",
           "refId": "prometheus-Gateway-Variable-Query"
         },
         "refresh": 1,
@@ -2217,26 +2191,8 @@
   },
   "timepicker": {
     "nowDelay": "",
-    "refresh_intervals": [
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "refresh_intervals": ["30s", "1m", "5m", "15m", "30m", "1h", "2h"],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "UTC",
   "title": "Ubiquiti / USG",
